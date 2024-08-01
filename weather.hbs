@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThapaWeather</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.weather-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#cityInput {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+#searchButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color: #0056b3;
+}
+
+.output-container {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    width: 350px;
+    border-radius: 5px;
+}
+
+.output-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.output-content {
+    font-size: 18px;
+}
+
+     </style>
+</head>
+<body>
+    <header>
+        <h1>ThapaWeather</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="#">Weather</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="weather-container">
+            <input type="text" id="cityInput" placeholder="Enter your city name...">
+            <button id="searchButton" onclick=Weather()>Search</button>
+        </div>
+        <div class="output-container">
+            <div class="output-header">
+                <span id="day">Tuesday</span>
+                <span id="tareek">13 Oct</span>
+            </div>
+            <div id="output">
+             
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+
+
+
+
+      
+     
+
+  
+        async function Weather(){
+            const city = document.getElementById('cityInput').value
+            const url = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=d39ed541a5fd388f6e3cb9cf7192d8f8`;
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log(data.main.temp);
+   document.getElementById('output').innerHTML=`the temp for ${city} is ${data.main.temp}`
+         
+        };
+       const btn = document.querySelector('#searchButton');
+       
+const day = document.getElementById('day');
+const tareek = document.getElementById('tareek');
+const date = new Date();
+const din = date.getDay();
+const today = date.getDate();
+const todaymonth = date.getMonth();
+const todayyear = date.getFullYear();
+console.log(todayyear)
+console.log(today);
+tareek.innerHTML= `${today}/${todaymonth}/${todayyear}`
+if(din==0){
+    day.innerHTML=="sunday"
+}
+else if(din==1){
+day.innerHTML="monday"
+}
+else if(din==2){
+    day.innerHTML="tuesday"
+}
+else if(din==3){
+    day.innerHTML="wednesday"
+}
+else if(din==4){
+    day.innerHTML=="thursday"
+}
+else if(din==5){
+    day.innerHTML="friday"
+}
+else if(din==6){
+    day.innerHTML="saturday"
+};
+
+    </script>
+</body>
+</html>
